@@ -823,7 +823,7 @@ export default function Home() {
             
             {/* Quick Links */}
             <div>
-              <h4 className="font-serif text-xl font-semibold text-gold-400 mb-6">Quick Links</h4>
+              <h4 className="text-xl font-semibold text-gold-400 mb-6" style={{ fontFamily: "'sabana', serif" }}>Quick Links</h4>
               <div className="flex flex-col gap-3">
                 {['Home', 'Our Dates', 'About Us', 'Contact'].map((item) => (
                   <button 
