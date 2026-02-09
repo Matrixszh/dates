@@ -103,9 +103,9 @@ const features = [
 
 export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const [selectedDate, setSelectedDate] = useState<typeof dateVarieties[0] | null>(null)
+  const [selectedDate, setSelectedDate] = useState(null)
 
-  const scrollToSection = (id: string) => {
+  const scrollToSection = (id) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
     setMobileMenuOpen(false)
   }
