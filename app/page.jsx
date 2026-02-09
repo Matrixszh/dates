@@ -840,7 +840,7 @@ export default function Home() {
             
             {/* Contact */}
             <div>
-              <h4 className="text-xl font-semibold text-gold-400 mb-6" style={{ fontFamily: "'Rakkas', cursive" }}>Contact Us</h4>
+              <h4 className="text-xl font-semibold text-gold-400 mb-6" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Contact Us</h4>
               <div className="flex flex-col gap-4">
                 <a href="tel:+917989075490" className="flex items-center gap-3 text-cream-300/70 hover:text-gold-400 transition-colors group">
                   <div className="w-10 h-10 bg-gold-500/20 rounded-lg flex items-center justify-center group-hover:bg-gold-500/30 transition-colors">
