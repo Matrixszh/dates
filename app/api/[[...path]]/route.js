@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from 'next/server'
+import { NextResponse } from 'next/server'
 import { v4 as uuidv4 } from 'uuid'
 import clientPromise from '@/lib/mongodb'
 
@@ -17,7 +17,7 @@ export async function OPTIONS() {
   return NextResponse.json({}, { headers: corsHeaders })
 }
 
-export async function GET(request: NextRequest, { params }: { params: Promise<{ path?: string[] }> }) {
+export async function GET(request, { params }) {
   try {
     const { path } = await params
     const pathStr = path?.join('/') || ''
@@ -48,7 +48,7 @@ export async function GET(request: NextRequest, { params }: { params: Promise<{ 
   }
 }
 
-export async function POST(request: NextRequest, { params }: { params: Promise<{ path?: string[] }> }) {
+export async function POST(request, { params }) {
   try {
     const { path } = await params
     const pathStr = path?.join('/') || ''
@@ -100,7 +100,7 @@ export async function POST(request: NextRequest, { params }: { params: Promise<{
   }
 }
 
-export async function PUT(request: NextRequest, { params }: { params: Promise<{ path?: string[] }> }) {
+export async function PUT(request, { params }) {
   try {
     const { path } = await params
     const pathStr = path?.join('/') || ''
@@ -131,7 +131,7 @@ export async function PUT(request: NextRequest, { params }: { params: Promise<{ 
   }
 }
 
-export async function DELETE(request: NextRequest, { params }: { params: Promise<{ path?: string[] }> }) {
+export async function DELETE(request, { params }) {
   try {
     const { path } = await params
     const pathStr = path?.join('/') || ''
