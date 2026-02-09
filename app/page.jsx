@@ -490,8 +490,8 @@ export default function Home() {
         <div className="container mx-auto px-4" ref={productsRef}>
           <div className={`text-center mb-16 ${productsVisible ? 'fade-in-up' : 'opacity-0'}`}>
             <span className="inline-block text-gold-500 font-semibold text-sm uppercase tracking-[0.3em] mb-4">Our Collection</span>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-brown-700 mb-6" style={{ fontFamily: "'Rakkas', cursive" }}>
-              Varieties of <span className="shimmer-text">Premium Dates</span>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-brown-700 mb-6" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+              Varieties of <span className="shimmer-text" style={{ fontFamily: "'Great Vibes', cursive" }}>Premium Dates</span>
             </h2>
             <OrnateDivider className="max-w-md mx-auto mb-6" />
             <p className="text-brown-500 max-w-2xl mx-auto text-lg">
