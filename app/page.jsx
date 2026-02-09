@@ -651,8 +651,8 @@ export default function Home() {
             
             <div className={`${aboutVisible ? 'fade-in-right stagger-2' : 'opacity-0'}`}>
               <span className="text-gold-500 font-semibold text-sm uppercase tracking-[0.3em]">About TAMR</span>
-              <h2 className="text-4xl md:text-5xl font-bold text-brown-700 mt-4 mb-8" style={{ fontFamily: "'Rakkas', cursive" }}>
-                A Legacy of <span className="shimmer-text">Premium Quality</span>
+              <h2 className="text-4xl md:text-5xl font-bold text-brown-700 mt-4 mb-8" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                A Legacy of <span className="shimmer-text" style={{ fontFamily: "'Great Vibes', cursive" }}>Premium Quality</span>
               </h2>
               <OrnateDivider className="max-w-xs mb-8" />
               
