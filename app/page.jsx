@@ -470,7 +470,7 @@ export default function Home() {
                 <div className="text-gold-400/60 text-sm font-medium mb-2" style={{ fontFamily: 'Amiri, serif' }}>
                   {feature.arabic}
                 </div>
-                <h3 className="text-xl font-semibold text-gold-300 mb-3 group-hover:text-gold-200 transition-colors" style={{ fontFamily: "'Rakkas', cursive" }}>
+                <h3 className="text-xl font-semibold text-gold-300 mb-3 group-hover:text-gold-200 transition-colors" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                   {feature.title}
                 </h3>
                 <p className="text-cream-200/70 text-sm leading-relaxed">{feature.description}</p>
