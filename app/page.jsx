@@ -770,7 +770,7 @@ export default function Home() {
             <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-gold-400 to-transparent" />
             
             <div className="relative z-10">
-              <h3 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold shimmer-text mb-6">
+              <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold shimmer-text mb-6" style={{ fontFamily: "'sabana', serif" }}>
                 Order Your Premium Dates Today!
               </h3>
               <p className="text-cream-200/80 max-w-2xl mx-auto mb-10 text-lg">
