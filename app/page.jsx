@@ -770,8 +770,8 @@ export default function Home() {
             <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-gold-400 to-transparent" />
             
             <div className="relative z-10">
-              <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold shimmer-text mb-6" style={{ fontFamily: "'Rakkas', cursive" }}>
-                Order Your Premium Dates Today!
+              <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6" style={{ fontFamily: "'Great Vibes', cursive" }}>
+                <span className="shimmer-text">Order Your Premium Dates Today!</span>
               </h3>
               <p className="text-cream-200/80 max-w-2xl mx-auto mb-10 text-lg">
                 Experience the finest quality dates from TAMR. Contact us now to place your order and enjoy nature&apos;s sweetest gift.
