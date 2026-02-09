@@ -531,7 +531,7 @@ export default function Home() {
                   </div>
                 </div>
                 <CardHeader className="pb-2">
-                  <CardTitle className="font-serif text-xl text-brown-700 group-hover:text-gold-600 transition-colors">
+                  <CardTitle className="text-xl text-brown-700 group-hover:text-gold-600 transition-colors" style={{ fontFamily: "'sabana', serif" }}>
                     {date.name}
                   </CardTitle>
                   <CardDescription className="text-gold-600 text-sm font-medium">
