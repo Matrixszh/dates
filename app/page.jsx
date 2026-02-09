@@ -343,10 +343,9 @@ export default function Home() {
                 <Crown className="w-4 h-4 text-gold-600" />
               </div>
               
-              <h1 className={`text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold leading-tight mb-6 ${heroVisible ? 'fade-in-up stagger-1' : ''}`}>
-                <span className="shimmer-text" style={{ fontFamily: "'Great Vibes', cursive", fontWeight: 400 }}>TAMR</span>
-                <br />
-                <span className="text-brown-700" style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600 }}>Premium Dates</span>
+              <h1 className={`text-5xl md:text-6xl lg:text-7xl xl:text-8xl leading-tight mb-6 ${heroVisible ? 'fade-in-up stagger-1' : ''}`}>
+                <span className="shimmer-text block" style={{ fontFamily: "'Dancing Script', cursive", fontWeight: 700 }}>TAMR</span>
+                <span className="text-brown-700 block" style={{ fontFamily: "'Cinzel', serif", fontWeight: 600, letterSpacing: '0.1em' }}>Premium Dates</span>
               </h1>
               
               <div className={`flex items-center justify-center lg:justify-start gap-4 mb-6 ${heroVisible ? 'fade-in-up stagger-2' : ''}`}>
