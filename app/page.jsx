@@ -753,7 +753,7 @@ export default function Home() {
               <div className="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-gold-400 to-gold-600 rounded-2xl flex items-center justify-center shadow-xl">
                 <MapPin className="text-white" size={32} />
               </div>
-              <h3 className="text-2xl font-semibold text-brown-700 mb-3" style={{ fontFamily: "'Cormorant Garamond', serif" }}>Delivery</h3>
+              <h3 className="text-2xl font-semibold text-brown-700 mb-3" style={{ fontFamily: "'Cinzel', serif" }}>Delivery</h3>
               <p className="text-brown-400 mb-6">Pan-India Delivery Available</p>
               <p className="text-gold-600 font-bold text-lg">Fast & Secure Shipping</p>
               <p className="text-brown-500 text-sm mt-3">Fresh dates delivered to your doorstep</p>
