@@ -344,9 +344,9 @@ export default function Home() {
               </div>
               
               <h1 className={`text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold leading-tight mb-6 ${heroVisible ? 'fade-in-up stagger-1' : ''}`}>
-                <span className="shimmer-text" style={{ fontFamily: "'Reem Kufi', sans-serif" }}>TAMR</span>
+                <span className="shimmer-text" style={{ fontFamily: "'Great Vibes', cursive", fontWeight: 400 }}>TAMR</span>
                 <br />
-                <span className="text-brown-700" style={{ fontFamily: "'Reem Kufi', sans-serif" }}>Premium Dates</span>
+                <span className="text-brown-700" style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 600 }}>Premium Dates</span>
               </h1>
               
               <div className={`flex items-center justify-center lg:justify-start gap-4 mb-6 ${heroVisible ? 'fade-in-up stagger-2' : ''}`}>
