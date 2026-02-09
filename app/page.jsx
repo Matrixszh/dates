@@ -589,7 +589,7 @@ export default function Home() {
                 <span className="px-4 py-1.5 bg-gold-400 text-white text-sm font-semibold rounded-full shadow-lg">
                   {selectedDate.origin}
                 </span>
-                <h3 className="text-4xl font-bold text-white mt-3" style={{ fontFamily: "'sabana', serif" }}>{selectedDate.name}</h3>
+                <h3 className="text-4xl font-bold text-white mt-3" style={{ fontFamily: "'Rakkas', cursive" }}>{selectedDate.name}</h3>
               </div>
             </div>
             <div className="p-8">
