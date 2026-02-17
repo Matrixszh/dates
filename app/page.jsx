@@ -110,6 +110,45 @@ const features = [
   },
 ]
 
+const premiumStuffedDates = [
+  {
+    name: 'Peanut Butter',
+    description: 'Rich dark chocolate coated dates filled with silky peanut butter.',
+    gradient: 'from-amber-400 to-amber-600',
+    image: 'https://images.unsplash.com/photo-1606318313647-1370b9046b1c?crop=entropy&cs=srgb&fm=jpg&q=85&w=500',
+  },
+  {
+    name: 'Pistachio Cream',
+    description: 'Milk chocolate shell with a luxurious pistachio cream centre.',
+    gradient: 'from-emerald-400 to-emerald-600',
+    image: 'https://images.unsplash.com/photo-1542827631-29bcb5890c05?crop=entropy&cs=srgb&fm=jpg&q=85&w=500',
+  },
+  {
+    name: 'Nutella',
+    description: 'Classic Nutella filling wrapped in a blush chocolate shell.',
+    gradient: 'from-rose-400 to-rose-600',
+    image: 'https://images.unsplash.com/photo-1542838132-92c53300491e?crop=entropy&cs=srgb&fm=jpg&q=85&w=500',
+  },
+  {
+    name: 'Lotus',
+    description: 'Caramelised Lotus biscuit cream inside a golden chocolate layer.',
+    gradient: 'from-orange-300 to-amber-500',
+    image: 'https://images.unsplash.com/photo-1519915028121-7d3463d20b13?crop=entropy&cs=srgb&fm=jpg&q=85&w=500',
+  },
+  {
+    name: 'Baklava Filling',
+    description: 'Layers of nuts and honey inspired by traditional baklava.',
+    gradient: 'from-lime-400 to-amber-500',
+    image: 'https://images.unsplash.com/photo-1625944229409-4ef1c8db4859?crop=entropy&cs=srgb&fm=jpg&q=85&w=500',
+  },
+  {
+    name: 'Almonds',
+    description: 'Whole roasted almonds in a smooth white chocolate coating.',
+    gradient: 'from-yellow-200 to-amber-400',
+    image: 'https://images.unsplash.com/photo-1580711504364-7a684e3ba76e?crop=entropy&cs=srgb&fm=jpg&q=85&w=500',
+  },
+]
+
 // Custom hook for scroll animations
 function useScrollAnimation() {
   const [isVisible, setIsVisible] = useState(false)
@@ -220,6 +259,7 @@ export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [selectedDate, setSelectedDate] = useState(null)
   const [scrolled, setScrolled] = useState(false)
+  const [isPageLoading, setIsPageLoading] = useState(true)
   
   // Refs for scroll animations
   const [heroRef, heroVisible] = useScrollAnimation()
@@ -235,6 +275,13 @@ export default function Home() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsPageLoading(false)
+    }, 1500)
+    return () => clearTimeout(timer)
+  }, [])
+
   const scrollToSection = (id) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
     setMobileMenuOpen(false)
@@ -242,6 +289,20 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-cream-100 via-cream-50 to-cream-100 overflow-x-hidden">
+      {isPageLoading && (
+        <div className="page-loader">
+          <div className="relative">
+            <div className="page-loader-ring" />
+            <div className="page-loader-inner">
+              <img
+                src={LOGO_URL}
+                alt="TAMR Premium Dates"
+                className="page-loader-logo"
+              />
+            </div>
+          </div>
+        </div>
+      )}
       {/* Floating Decorative Elements */}
       <FloatingLantern className="top-32 left-8 hidden lg:block" delay={0} />
       <FloatingLantern className="top-64 right-12 hidden lg:block" delay={1.5} />
@@ -268,7 +329,7 @@ export default function Home() {
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center gap-8">
-              {['Home', 'Our Dates', 'About', 'Contact'].map((item, index) => (
+              {['Home', 'Our Dates', 'Premium', 'About', 'Contact'].map((item, index) => (
                 <button 
                   key={item}
                   onClick={() => scrollToSection(item === 'Our Dates' ? 'products' : item.toLowerCase())}
@@ -303,7 +364,7 @@ export default function Home() {
         }`}>
           <div className="bg-cream-50/98 backdrop-blur-lg border-t border-gold-200 py-6">
             <div className="container mx-auto px-4 flex flex-col gap-4">
-              {['Home', 'Our Dates', 'About', 'Contact'].map((item) => (
+              {['Home', 'Our Dates', 'Premium', 'About', 'Contact'].map((item) => (
                 <button 
                   key={item}
                   onClick={() => scrollToSection(item === 'Our Dates' ? 'products' : item.toLowerCase())}
@@ -343,9 +404,9 @@ export default function Home() {
                 <Crown className="w-4 h-4 text-gold-600" />
               </div>
               
-              <h1 className={`text-5xl md:text-6xl lg:text-7xl xl:text-8xl leading-tight mb-6 ${heroVisible ? 'fade-in-up stagger-1' : ''}`}>
-                <span className="shimmer-text block" style={{ fontFamily: "'Dancing Script', cursive", fontWeight: 700 }}>TAMR</span>
-                <span className="text-brown-700 block" style={{ fontFamily: "'Cinzel', serif", fontWeight: 600, letterSpacing: '0.1em' }}>Premium Dates</span>
+              <h1 className={`text-5xl md:text-6xl lg:text-7xl xl:text-8xl leading-tight mb-6 tracking-[0.2em] uppercase ${heroVisible ? 'fade-in-up stagger-1' : ''}`}>
+                <span className="shimmer-text block text-[0.9em]">TAMR</span>
+                <span className="text-brown-700 block text-[0.5em] tracking-[0.3em]">Premium Dates</span>
               </h1>
               
               <div className={`flex items-center justify-center lg:justify-start gap-4 mb-6 ${heroVisible ? 'fade-in-up stagger-2' : ''}`}>
@@ -405,7 +466,7 @@ export default function Home() {
                 
                 {/* Main Logo */}
                 <div className="relative p-12">
-                  <div className="relative gold-glow rounded-full p-4 bg-gradient-to-br from-cream-50 to-cream-100">
+                  <div className="relative rounded-full p-4">
                     <img 
                       src={LOGO_URL}
                       alt="TAMR Premium Dates"
@@ -414,38 +475,14 @@ export default function Home() {
                   </div>
                 </div>
                 
-                {/* Floating Badge */}
-                <div className="absolute -bottom-4 -right-4 md:bottom-8 md:right-0 bg-white rounded-2xl shadow-2xl p-5 gold-shadow scale-in">
-                  <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 bg-gradient-to-br from-gold-400 to-gold-600 rounded-full flex items-center justify-center pulse-gold">
-                      <Star className="text-white" size={24} />
-                    </div>
-                    <div>
-                      <div className="text-sm font-bold text-brown-700">Premium Quality</div>
-                      <div className="text-xs text-gold-500 font-medium">Certified Fresh</div>
-                    </div>
-                  </div>
-                </div>
-                
-                {/* Top Badge */}
-                <div className="absolute -top-4 -left-4 md:top-8 md:left-0 bg-gradient-to-r from-gold-400 to-gold-500 rounded-2xl shadow-xl p-4 rotate-in">
-                  <div className="text-white text-center">
-                    <div className="text-xs font-medium opacity-90">Since</div>
-                    <div className="text-lg font-bold">2025</div>
-                  </div>
-                </div>
+             
+               
               </div>
             </div>
           </div>
         </div>
         
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce">
-          <span className="text-gold-500 text-sm font-medium">Scroll</span>
-          <div className="w-6 h-10 border-2 border-gold-400 rounded-full flex justify-center pt-2">
-            <div className="w-1.5 h-3 bg-gold-400 rounded-full animate-bounce" />
-          </div>
-        </div>
+        
       </section>
 
       {/* Features Section */}
@@ -489,8 +526,8 @@ export default function Home() {
         <div className="container mx-auto px-4" ref={productsRef}>
           <div className={`text-center mb-16 ${productsVisible ? 'fade-in-up' : 'opacity-0'}`}>
             <span className="inline-block text-gold-500 font-semibold text-sm uppercase tracking-[0.3em] mb-4">Our Collection</span>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl text-brown-700 mb-6" style={{ fontFamily: "'Cinzel', serif", fontWeight: 600 }}>
-              Varieties of <span className="shimmer-text" style={{ fontFamily: "'Dancing Script', cursive", fontWeight: 700 }}>Premium Dates</span>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl text-brown-700 mb-6">
+              Varieties of <span className="shimmer-text">Premium Dates</span>
             </h2>
             <OrnateDivider className="max-w-md mx-auto mb-6" />
             <p className="text-brown-500 max-w-2xl mx-auto text-lg">
@@ -530,7 +567,7 @@ export default function Home() {
                   </div>
                 </div>
                 <CardHeader className="pb-2">
-                  <CardTitle className="text-xl text-brown-700 group-hover:text-gold-600 transition-colors" style={{ fontFamily: "'Cinzel', serif", fontWeight: 600 }}>
+                  <CardTitle className="text-xl text-brown-700 group-hover:text-gold-600 transition-colors">
                     {date.name}
                   </CardTitle>
                   <CardDescription className="text-gold-600 text-sm font-medium">
@@ -549,6 +586,71 @@ export default function Home() {
                 </CardContent>
               </Card>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="premium" className="py-20 md:py-28 bg-gradient-to-br from-brown-900 via-brown-800 to-brown-900 relative overflow-hidden">
+        <ArabicPattern className="opacity-10" />
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="grid lg:grid-cols-2 gap-12 items-start">
+            <div className="space-y-6">
+              <span className="text-gold-400 font-semibold text-sm uppercase tracking-[0.35em]">
+                Premium Section
+              </span>
+              <h2 className="text-4xl md:text-5xl text-cream-100">
+                Stuffed Chocolate Dates
+              </h2>
+              <OrnateDivider className="max-w-xs" />
+              <p className="text-cream-200/80 text-lg leading-relaxed max-w-xl">
+                Indulge in our most luxurious creations: hand-stuffed dates dipped in rich chocolate and finished with decadent fillings inspired by the finest dessert traditions.
+              </p>
+              <div className="grid grid-cols-2 gap-4 max-w-md">
+                <div className="rounded-2xl border border-gold-500/30 bg-white/5 px-4 py-3 text-sm text-cream-100">
+                  Rich Belgian chocolate coating
+                </div>
+                <div className="rounded-2xl border border-gold-500/30 bg-white/5 px-4 py-3 text-sm text-cream-100">
+                  Hand-stuffed with gourmet fillings
+                </div>
+                <div className="rounded-2xl border border-gold-500/30 bg-white/5 px-4 py-3 text-sm text-cream-100">
+                  Perfect for gifting and occasions
+                </div>
+                <div className="rounded-2xl border border-gold-500/30 bg-white/5 px-4 py-3 text-sm text-cream-100">
+                  Limited premium collection
+                </div>
+              </div>
+            </div>
+            <div className="space-y-4">
+              {premiumStuffedDates.map((item, index) => (
+                <div
+                  key={item.name}
+                  className="flex items-center gap-4 rounded-2xl border border-gold-500/30 bg-white/5 px-4 py-4 md:px-5 md:py-5 card-lift"
+                  style={{ animationDelay: `${index * 0.08}s` }}
+                >
+                  <div className="relative w-20 h-20 md:w-24 md:h-24 rounded-2xl overflow-hidden shadow-lg border border-gold-500/40 bg-gradient-to-br from-brown-800 to-brown-900">
+                    <img
+                      src={item.image}
+                      alt={item.name}
+                      className="w-full h-full object-cover"
+                    />
+                    <div className={`absolute inset-0 bg-gradient-to-t ${item.gradient} opacity-30`} />
+                  </div>
+                  <div className="flex-1">
+                    <div className="flex items-baseline justify-between gap-3">
+                      <h3 className="text-lg md:text-xl font-semibold text-cream-100">
+                        {item.name}
+                      </h3>
+                      <span className="text-[0.6rem] md:text-xs tracking-[0.3em] uppercase text-gold-300">
+                        Premium
+                      </span>
+                    </div>
+                    <p className="text-sm md:text-base text-cream-200/80 mt-1">
+                      {item.description}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -588,7 +690,7 @@ export default function Home() {
                 <span className="px-4 py-1.5 bg-gold-400 text-white text-sm font-semibold rounded-full shadow-lg">
                   {selectedDate.origin}
                 </span>
-                <h3 className="text-4xl text-white mt-3" style={{ fontFamily: "'Dancing Script', cursive", fontWeight: 700 }}>{selectedDate.name}</h3>
+                <h3 className="text-4xl text-white mt-3">{selectedDate.name}</h3>
               </div>
             </div>
             <div className="p-8">
@@ -650,8 +752,8 @@ export default function Home() {
             
             <div className={`${aboutVisible ? 'fade-in-right stagger-2' : 'opacity-0'}`}>
               <span className="text-gold-500 font-semibold text-sm uppercase tracking-[0.3em]">About TAMR</span>
-              <h2 className="text-4xl md:text-5xl text-brown-700 mt-4 mb-8" style={{ fontFamily: "'Cinzel', serif", fontWeight: 600 }}>
-                A Legacy of <span className="shimmer-text" style={{ fontFamily: "'Dancing Script', cursive", fontWeight: 700 }}>Premium Quality</span>
+              <h2 className="text-4xl md:text-5xl text-brown-700 mt-4 mb-8">
+                A Legacy of <span className="shimmer-text">Premium Quality</span>
               </h2>
               <OrnateDivider className="max-w-xs mb-8" />
               
@@ -698,8 +800,8 @@ export default function Home() {
         <div className="container mx-auto px-4" ref={contactRef}>
           <div className={`text-center mb-16 ${contactVisible ? 'fade-in-up' : 'opacity-0'}`}>
             <span className="text-gold-500 font-semibold text-sm uppercase tracking-[0.3em] mb-4 block">Get In Touch</span>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl text-brown-700 mb-6" style={{ fontFamily: "'Cinzel', serif", fontWeight: 600 }}>
-              Ready to <span className="shimmer-text" style={{ fontFamily: "'Dancing Script', cursive", fontWeight: 700 }}>Order?</span>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl text-brown-700 mb-6">
+              Ready to <span className="shimmer-text">Order?</span>
             </h2>
             <OrnateDivider className="max-w-md mx-auto mb-6" />
             <p className="text-brown-500 max-w-2xl mx-auto text-lg">
@@ -713,7 +815,7 @@ export default function Home() {
               <div className="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-gold-400 to-gold-600 rounded-2xl flex items-center justify-center shadow-xl pulse-gold">
                 <Phone className="text-white" size={32} />
               </div>
-              <h3 className="text-2xl font-semibold text-brown-700 mb-3" style={{ fontFamily: "'Cinzel', serif" }}>Call Us</h3>
+              <h3 className="text-2xl font-semibold text-brown-700 mb-3">Call Us</h3>
               <p className="text-brown-400 mb-6">Available 9 AM - 9 PM</p>
               <a 
                 href="tel:+917989075490"
@@ -736,7 +838,7 @@ export default function Home() {
                   <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
                 </svg>
               </div>
-              <h3 className="text-2xl font-semibold mb-3" style={{ fontFamily: "'Cinzel', serif" }}>WhatsApp</h3>
+              <h3 className="text-2xl font-semibold mb-3">WhatsApp</h3>
               <p className="text-white/80 mb-6">Quick Response Guaranteed</p>
               <a 
                 href="https://wa.me/917989075490?text=Hi%20TAMR!%20I%27m%20interested%20in%20ordering%20premium%20dates."
@@ -753,7 +855,7 @@ export default function Home() {
               <div className="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-gold-400 to-gold-600 rounded-2xl flex items-center justify-center shadow-xl">
                 <MapPin className="text-white" size={32} />
               </div>
-              <h3 className="text-2xl font-semibold text-brown-700 mb-3" style={{ fontFamily: "'Cinzel', serif" }}>Delivery</h3>
+              <h3 className="text-2xl font-semibold text-brown-700 mb-3">Delivery</h3>
               <p className="text-brown-400 mb-6">Pan-India Delivery Available</p>
               <p className="text-gold-600 font-bold text-lg">Fast & Secure Shipping</p>
               <p className="text-brown-500 text-sm mt-3">Fresh dates delivered to your doorstep</p>
@@ -769,7 +871,7 @@ export default function Home() {
             <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-gold-400 to-transparent" />
             
             <div className="relative z-10">
-              <h3 className="text-3xl md:text-4xl lg:text-5xl mb-6" style={{ fontFamily: "'Dancing Script', cursive", fontWeight: 700 }}>
+              <h3 className="text-3xl md:text-4xl lg:text-5xl mb-6">
                 <span className="shimmer-text">Order Your Premium Dates Today!</span>
               </h3>
               <p className="text-cream-200/80 max-w-2xl mx-auto mb-10 text-lg">
@@ -822,9 +924,9 @@ export default function Home() {
             
             {/* Quick Links */}
             <div>
-              <h4 className="text-xl font-semibold text-gold-400 mb-6" style={{ fontFamily: "'Cinzel', serif" }}>Quick Links</h4>
+              <h4 className="text-xl font-semibold text-gold-400 mb-6">Quick Links</h4>
               <div className="flex flex-col gap-3">
-                {['Home', 'Our Dates', 'About Us', 'Contact'].map((item) => (
+                {['Home', 'Our Dates', 'Premium', 'About Us', 'Contact'].map((item) => (
                   <button 
                     key={item}
                     onClick={() => scrollToSection(item === 'Our Dates' ? 'products' : item === 'About Us' ? 'about' : item.toLowerCase())}
@@ -839,7 +941,7 @@ export default function Home() {
             
             {/* Contact */}
             <div>
-              <h4 className="text-xl font-semibold text-gold-400 mb-6" style={{ fontFamily: "'Cinzel', serif" }}>Contact Us</h4>
+              <h4 className="text-xl font-semibold text-gold-400 mb-6">Contact Us</h4>
               <div className="flex flex-col gap-4">
                 <a href="tel:+917989075490" className="flex items-center gap-3 text-cream-300/70 hover:text-gold-400 transition-colors group">
                   <div className="w-10 h-10 bg-gold-500/20 rounded-lg flex items-center justify-center group-hover:bg-gold-500/30 transition-colors">
